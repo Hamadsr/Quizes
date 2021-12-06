@@ -4,12 +4,16 @@ and print the slug and synopsis keys of index 1 in the returned data array using
 
 /* write your code here */
 
-fetch("https://kitsu.io/api/edge/anime?filter[text]=flcl")
-.then((res)=> res.json())
-.then((data)=>
- console.log(data.data[1].attributes.slug, data.data[1].attributes.synopsis)
- 
- )
+
+ async function Data() {
+  try {
+    const response = await fetch("https://kitsu.io/api/edge/anime?filter[text]=flcl");
+    const data = await response.json();
+    console.log(data.data[1].attributes.slug, data.data[1].attributes.synopsis);
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 
 /* 2- using the starter code for react application provided to you, do the following:
